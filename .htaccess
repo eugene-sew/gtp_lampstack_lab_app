@@ -1,0 +1,15 @@
+RewriteEngine On
+
+# Handle API requests
+RewriteRule ^api/notes/?$ api/notes.php [L,QSA]
+RewriteRule ^api/notes/([0-9]+)/?$ api/notes.php?id=$1 [L,QSA]
+
+# Prevent direct access to PHP files in includes and config directories
+RewriteRule ^includes/.*\.php$ - [F,L]
+RewriteRule ^config/.*\.php$ - [F,L]
+
+# Prevent direct access to the database directory
+RewriteRule ^database/ - [F,L]
+
+# Handle 404 errors
+ErrorDocument 404 /index.php
