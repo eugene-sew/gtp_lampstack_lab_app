@@ -25,6 +25,11 @@ define('DB_USER', getenv('DB_USER') ?: 'root');
 define('DB_PASS', getenv('DB_PASS') ?: '');
 define('DB_NAME', getenv('DB_NAME') ?: 'notes_app');
 
+echo DB_HOST;
+echo DB_USER;
+echo DB_PASS;
+echo DB_NAME;
+
 // Create connection
 function getDbConnection() {
     $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
