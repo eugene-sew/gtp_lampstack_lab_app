@@ -1,6 +1,5 @@
 <?php
 // Database configuration
-// Simple .env loader
 function loadEnv($path = null) {
     if ($path === null) {
         $path = dirname(__FILE__) . '/../.env';
@@ -25,14 +24,15 @@ define('DB_USER', getenv('DB_USER') ?: 'root');
 define('DB_PASS', getenv('DB_PASS') ?: '');
 define('DB_NAME', getenv('DB_NAME') ?: 'notes_app');
 
+echo(DB_HOST);
 
-
-// Create connection
 function getDbConnection() {
     $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     
     // Check connection
     if ($conn->connect_error) {
+        // Echo the error message
+        echo "Database connection error: " . $conn->connect_error;
         return null;
     }
     
@@ -48,4 +48,3 @@ function isDatabaseAvailable() {
     $conn->close();
     return true;
 }
-?>
